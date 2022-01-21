@@ -36,6 +36,11 @@
 			<artifactId>vorbisspi</artifactId>
 			<version>1.0.3.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-media</artifactId>
+			<version>15</version>
+		</dependency>
 	</dependencies>
 
 </project>
