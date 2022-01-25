@@ -3,7 +3,6 @@ package com.khauminhduy;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,8 +12,9 @@ import java.util.stream.Collectors;
 
 import com.khauminhduy.consts.Const;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javazoom.jl.player.advanced.AdvancedPlayer;
+import javazoom.jl.player.advanced.PlaybackEvent;
+import javazoom.jl.player.advanced.PlaybackListener;
 
 public class App {
 
@@ -32,16 +32,33 @@ public class App {
 //		Player player = new Player(bufferedInputStream);
 //		player.play();
 		
-//		AdvancedPlayer advancedPlayer = new AdvancedPlayer(bufferedInputStream);
-//		AdvancedPlayer advancedPlayer2 = new AdvancedPlayer(bufferedInputStream2);
-//		advancedPlayer.play(0, 78);
-//		advancedPlayer2.play(5, 70);
+		AdvancedPlayer advancedPlayer = new AdvancedPlayer(bufferedInputStream);
+		AdvancedPlayer advancedPlayer2 = new AdvancedPlayer(bufferedInputStream2);
+		advancedPlayer.play(0, 78);
+		advancedPlayer.setPlayBackListener(new PlaybackListener() {
+
+			@Override
+			public void playbackStarted(PlaybackEvent evt) {
+				// TODO Auto-generated method stub
+				super.playbackStarted(evt);
+			}
+
+			@Override
+			public void playbackFinished(PlaybackEvent evt) {
+				// TODO Auto-generated method stub
+				super.playbackFinished(evt);
+			}
+			
+		});
+		
+		
+		advancedPlayer2.play(5, 70);
 		
 
-		Media media = new Media(new File("src/main/resources/hello.mp3").toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(media);
+//		Media media = new Media(new File("src/main/resources/hello.mp3").toURI().toString());
+//		MediaPlayer mediaPlayer = new MediaPlayer(media);
 		
-		mediaPlayer.play();
+//		mediaPlayer.play();
 	}
 
 	private static boolean textToSound(String text) throws IOException {
