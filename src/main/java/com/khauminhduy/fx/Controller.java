@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -108,14 +109,17 @@ public class Controller implements Initializable {
 	}
 
 	public void playMedia() throws InterruptedException {
-		beginTimer();
-		changeSpeed(null);
-		mediaPlayer1.setVolume(volumeSlider.getValue() * 0.01);
-		mediaPlayer1.play();
+//		beginTimer();
+//		changeSpeed(null);
+//		mediaPlayer1.setVolume(volumeSlider.getValue() * 0.01);
+//		mediaPlayer1.play();
 //		Duration currentTime = mediaPlayer1.getCurrentTime();
 //		double seconds = currentTime.toSeconds();
 //		Thread.sleep((long)seconds);
 //		mediaPlayer2.play();
+		
+		
+		
 	}
 
 	public void pauseMedia() {

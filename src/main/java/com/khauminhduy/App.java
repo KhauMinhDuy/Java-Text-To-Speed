@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 import com.khauminhduy.consts.Const;
 
+import javazoom.jl.player.Player;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
@@ -22,42 +23,39 @@ public class App {
 //		boolean done = textToSound("Xin Chào Quý Khách");
 //		byte[] data = Files.readAllBytes(Paths.get("src/main/resources/hello.mp3"));
 
-		
-		byte[] decode = Base64.getDecoder().decode(Const._28mon);
+		byte[] decode = Base64.getDecoder().decode(Const.text2);
 		byte[] decode2 = Base64.getDecoder().decode(Const._183000);
 
 		BufferedInputStream bufferedInputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		BufferedInputStream bufferedInputStream2 = new BufferedInputStream(new ByteArrayInputStream(decode2));
-		
-//		Player player = new Player(bufferedInputStream);
-//		player.play();
-		
-		AdvancedPlayer advancedPlayer = new AdvancedPlayer(bufferedInputStream);
-		AdvancedPlayer advancedPlayer2 = new AdvancedPlayer(bufferedInputStream2);
-		advancedPlayer.play(0, 78);
-		advancedPlayer.setPlayBackListener(new PlaybackListener() {
 
-			@Override
-			public void playbackStarted(PlaybackEvent evt) {
-				// TODO Auto-generated method stub
-				super.playbackStarted(evt);
-			}
+		Player player = new Player(bufferedInputStream);
+		player.play();
 
-			@Override
-			public void playbackFinished(PlaybackEvent evt) {
-				// TODO Auto-generated method stub
-				super.playbackFinished(evt);
-			}
-			
-		});
-		
-		
-		advancedPlayer2.play(5, 70);
-		
+//		AdvancedPlayer advancedPlayer = new AdvancedPlayer(bufferedInputStream);
+//		AdvancedPlayer advancedPlayer2 = new AdvancedPlayer(bufferedInputStream2);
+//		advancedPlayer.play();
+//		advancedPlayer.setPlayBackListener(new PlaybackListener() {
+//
+//			@Override
+//			public void playbackStarted(PlaybackEvent evt) {
+//				// TODO Auto-generated method stub
+//				super.playbackStarted(evt);
+//			}
+//
+//			@Override
+//			public void playbackFinished(PlaybackEvent evt) {
+//				// TODO Auto-generated method stub
+//				super.playbackFinished(evt);
+//			}
+//
+//		});
+
+//		advancedPlayer2.play(5, 70);
 
 //		Media media = new Media(new File("src/main/resources/hello.mp3").toURI().toString());
 //		MediaPlayer mediaPlayer = new MediaPlayer(media);
-		
+
 //		mediaPlayer.play();
 	}
 

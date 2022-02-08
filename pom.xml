@@ -37,9 +37,9 @@
 			<version>1.0.3.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-media</artifactId>
-			<version>15</version>
+			<groupId>com.googlecode</groupId>
+			<artifactId>google-api-translate-java</artifactId>
+			<version>0.92</version>
 		</dependency>
 	</dependencies>
 
