@@ -13,9 +13,6 @@ import java.util.stream.Collectors;
 import com.khauminhduy.consts.Const;
 
 import javazoom.jl.player.Player;
-import javazoom.jl.player.advanced.AdvancedPlayer;
-import javazoom.jl.player.advanced.PlaybackEvent;
-import javazoom.jl.player.advanced.PlaybackListener;
 
 public class App {
 
@@ -23,7 +20,7 @@ public class App {
 //		boolean done = textToSound("Xin Chào Quý Khách");
 //		byte[] data = Files.readAllBytes(Paths.get("src/main/resources/hello.mp3"));
 
-		byte[] decode = Base64.getDecoder().decode(Const.text2);
+		byte[] decode = Base64.getDecoder().decode(Const.text3);
 		byte[] decode2 = Base64.getDecoder().decode(Const._183000);
 
 		BufferedInputStream bufferedInputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
