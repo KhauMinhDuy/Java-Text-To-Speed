@@ -1,4 +1,4 @@
-package com.khauminhduy;
+package com.khauminhduy.test;
 //importing all necessary packages
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
