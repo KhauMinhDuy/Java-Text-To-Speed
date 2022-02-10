@@ -53,7 +53,7 @@ public class App {
 		for(byte[] voice : voices) {
 			inputStream = new BufferedInputStream(new ByteArrayInputStream(voice));
 			player = new AdvancedPlayer(inputStream);
-			player.play(0, 4);
+			player.play(0, 5);
 			
 		}
 		
