@@ -2,6 +2,8 @@ package com.khauminhduy.fx;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -116,8 +118,42 @@ public class Controller implements Initializable {
 //		Duration currentTime = mediaPlayer1.getCurrentTime();
 //		double seconds = currentTime.toSeconds();
 //		Thread.sleep((long)seconds);
+		
 //		mediaPlayer2.play();
 		
+		
+
+		File N_1 = new File("voice/N_1.mp3");
+		File N_2 = new File("voice/N_2.mp3");
+		File N_5 = new File("voice/N_5.mp3");
+		File N_7 = new File("voice/N_7.mp3");
+		File T_MOT = new File("voice/T_MOT.mp3");
+		File T_MUOI =new File("voice/T_MUOI.mp3");
+		File T_NGHIN = new File("voice/T_NGHIN.mp3");
+		File T_TRAM = new File("voice/T_TRAM.mp3");
+		File T_TRIEU = new File("voice/T_TRIEU.mp3");
+		
+		List<File> voices = new ArrayList<>();
+		voices.add(N_1);
+		voices.add(T_TRIEU);
+		voices.add(N_7);
+		voices.add(T_TRAM);
+		voices.add(N_2);
+		voices.add(T_MUOI);
+		voices.add(T_MOT);
+		voices.add(T_NGHIN);
+		voices.add(N_5);
+		voices.add(T_TRAM);
+		
+		Media media;
+		MediaPlayer mediaPlayer;
+		for(File voice : voices) {
+			media = new Media(voice.toURI().toString());
+			mediaPlayer = new MediaPlayer(media);
+			mediaPlayer.setStartTime(mediaPlayer.getStartTime());
+			mediaPlayer.setStopTime(mediaPlayer.getStopTime());
+			mediaPlayer.play();
+		}
 		
 		
 	}
