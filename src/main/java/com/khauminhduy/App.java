@@ -9,16 +9,12 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.khauminhduy.consts.Const;
-
-import javazoom.jl.player.Player;
 import javazoom.jl.player.advanced.AdvancedPlayer;
-import javazoom.jl.player.advanced.PlaybackEvent;
-import javazoom.jl.player.advanced.PlaybackListener;
+
+
 
 public class App {
 
@@ -35,7 +31,8 @@ public class App {
 		byte[] T_NGHIN = Files.readAllBytes(Paths.get("voice/T_NGHIN.mp3"));
 		byte[] T_TRAM = Files.readAllBytes(Paths.get("voice/T_TRAM.mp3"));
 		byte[] T_TRIEU = Files.readAllBytes(Paths.get("voice/T_TRIEU.mp3"));
-		
+		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voice/T_TONGTIEN2.mp3"));
+
 		List<byte[]> voices = new ArrayList<>();
 		voices.add(N_1);
 		voices.add(T_TRIEU);
@@ -47,16 +44,17 @@ public class App {
 		voices.add(T_NGHIN);
 		voices.add(N_5);
 		voices.add(T_TRAM);
-		
-		AdvancedPlayer player;
-		BufferedInputStream inputStream;
-		for(byte[] voice : voices) {
+
+		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(T_TONGTIEN));
+		AdvancedPlayer player = new AdvancedPlayer(inputStream);
+		player.play();
+		for (byte[] voice : voices) {
 			inputStream = new BufferedInputStream(new ByteArrayInputStream(voice));
 			player = new AdvancedPlayer(inputStream);
 			player.play(0, 5);
-			
+
 		}
-		
+
 //		byte[] decode = Base64.getDecoder().decode(Const.text6);
 //		byte[] decode2 = Base64.getDecoder().decode(Const._183000);
 //
