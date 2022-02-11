@@ -31,7 +31,7 @@ public class App {
 		byte[] T_NGHIN = Files.readAllBytes(Paths.get("voice/T_NGHIN.mp3"));
 		byte[] T_TRAM = Files.readAllBytes(Paths.get("voice/T_TRAM.mp3"));
 		byte[] T_TRIEU = Files.readAllBytes(Paths.get("voice/T_TRIEU.mp3"));
-		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voice/T_TONGTIEN2.mp3"));
+		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voice/T_TONGTIEN.mp3"));
 
 		List<byte[]> voices = new ArrayList<>();
 		voices.add(N_1);
