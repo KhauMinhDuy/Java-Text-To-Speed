@@ -55,12 +55,8 @@ public class App {
 
 		}
 
-//		byte[] decode = Base64.getDecoder().decode(Const.text6);
-//		byte[] decode2 = Base64.getDecoder().decode(Const._183000);
-//
+//		byte[] decode = Base64.getDecoder().decode(Const.text7);
 //		BufferedInputStream bufferedInputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
-//		BufferedInputStream bufferedInputStream2 = new BufferedInputStream(new ByteArrayInputStream(decode2));
-//		
 //		Player player2 = new Player(bufferedInputStream);
 //		player2.play();
 
