@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 import com.khauminhduy.consts.Const;
 
-import javazoom.jl.player.Player;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 
@@ -25,6 +24,7 @@ public class App {
 	public static void main(String[] args) throws Exception {
 //		boolean done = textToSound("Xin Chào Quý Khách");
 //		byte[] data = Files.readAllBytes(Paths.get("src/main/resources/hello.mp3"));
+		
 
 		byte[] N_1 = Files.readAllBytes(Paths.get("voice/N_1.mp3"));
 		byte[] N_2 = Files.readAllBytes(Paths.get("voice/N_2.mp3"));
@@ -41,23 +41,25 @@ public class App {
 		byte[] T_KHUYENMAI = Files.readAllBytes(Paths.get("voice/T_KHUYENMAI.mp3"));
 
 		List<byte[]> voices = new ArrayList<>();
-//		voices.add(N_1);
-//		voices.add(T_TRIEU);
-//		voices.add(N_7);
-//		voices.add(T_TRAM);
-//		voices.add(N_2);
-//		voices.add(T_MUOI);
-//		voices.add(T_MOT);
-//		voices.add(T_NGHIN);
-		
-		
-		voices.add(T_MUOIF);
-		voices.add(N_6);
+		voices.add(N_1);
+		voices.add(T_TRIEU);
+		voices.add(N_7);
+		voices.add(T_TRAM);
+		voices.add(N_2);
+		voices.add(T_MUOI);
+		voices.add(T_MOT);
 		voices.add(T_NGHIN);
+		voices.add(N_5);
+		voices.add(T_TRAM);
+		
+//		voices.add(T_MUOIF);
+//		voices.add(N_6);
+//		voices.add(T_NGHIN);
 
 		
 
-		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
+//		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
+		byte[] decode = Base64.getDecoder().decode(Const.text10);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
 		player.play();
@@ -84,32 +86,6 @@ public class App {
 		
 		
 		
-
-//		AdvancedPlayer advancedPlayer = new AdvancedPlayer(bufferedInputStream);
-//		AdvancedPlayer advancedPlayer2 = new AdvancedPlayer(bufferedInputStream2);
-//		advancedPlayer.play();
-//		advancedPlayer.setPlayBackListener(new PlaybackListener() {
-//
-//			@Override
-//			public void playbackStarted(PlaybackEvent evt) {
-//				// TODO Auto-generated method stub
-//				super.playbackStarted(evt);
-//			}
-//
-//			@Override
-//			public void playbackFinished(PlaybackEvent evt) {
-//				// TODO Auto-generated method stub
-//				super.playbackFinished(evt);
-//			}
-//
-//		});
-
-//		advancedPlayer2.play(5, 70);
-
-//		Media media = new Media(new File("src/main/resources/hello.mp3").toURI().toString());
-//		MediaPlayer mediaPlayer = new MediaPlayer(media);
-
-//		mediaPlayer.play();
 	}
 
 	private static boolean textToSound(String text) throws IOException {
