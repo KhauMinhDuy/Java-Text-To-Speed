@@ -41,16 +41,16 @@ public class App {
 		byte[] T_KHUYENMAI = Files.readAllBytes(Paths.get("voice/T_KHUYENMAI.mp3"));
 
 		List<byte[]> voices = new ArrayList<>();
-		voices.add(N_1);
-		voices.add(T_TRIEU);
-		voices.add(N_7);
-		voices.add(T_TRAM);
-		voices.add(N_2);
-		voices.add(T_MUOI);
-		voices.add(T_MOT);
-		voices.add(T_NGHIN);
-		voices.add(N_5);
-		voices.add(T_TRAM);
+//		voices.add(N_1);
+//		voices.add(T_TRIEU);
+//		voices.add(N_7);
+//		voices.add(T_TRAM);
+//		voices.add(N_2);
+//		voices.add(T_MUOI);
+//		voices.add(T_MOT);
+//		voices.add(T_NGHIN);
+//		voices.add(N_5);
+//		voices.add(T_TRAM);
 		
 //		voices.add(T_MUOIF);
 //		voices.add(N_6);
@@ -59,7 +59,7 @@ public class App {
 		
 
 //		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
-		byte[] decode = Base64.getDecoder().decode(Const.text10);
+		byte[] decode = Base64.getDecoder().decode(Const._50mon_test);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
 		player.play();
@@ -70,13 +70,13 @@ public class App {
 
 		}
 		
-		inputStream = new BufferedInputStream(new ByteArrayInputStream(T_KHUYENMAI));
-		player = new AdvancedPlayer(inputStream);
-		player.play();
+//		inputStream = new BufferedInputStream(new ByteArrayInputStream(T_KHUYENMAI));
+//		player = new AdvancedPlayer(inputStream);
+//		player.play();
 		
 		voices.clear();
-		voices.add(T_MUOIF);
-		voices.add(T_NGHIN);
+//		voices.add(T_MUOIF);
+//		voices.add(T_NGHIN);
 		for (byte[] voice : voices) {
 			inputStream = new BufferedInputStream(new ByteArrayInputStream(voice));
 			player = new AdvancedPlayer(inputStream);
