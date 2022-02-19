@@ -1,8 +1,6 @@
 package com.khauminhduy.downloadfile;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -12,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -29,63 +26,71 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 public class Main {
+	
+	private static final String APIKEY = "BteNwKa7jbIQ5EoNUNfl6TlEKlwcglrk";
+	private static final String SPEED = "1.05";
 
 	public static void main(String[] args) {
 
+//		genxmon();
+//		gencustom("cảm ơn quý khách", "camonquykhach");
+//		gencustom("giảm còn", "giamcon");
 		genprice();
-//		for (int i = 1; i <= 50; i++) {
-//			try (CloseableHttpClient httpClient = HttpClients.createDefault();) {
-//
-//				List<NameValuePair> params = new ArrayList<>();
-//				params.add(new BasicNameValuePair("input", "Giỏ hàng " + i + " món, tổng tiền"));
-//				params.add(new BasicNameValuePair("speed", "1.2"));
-//				params.add(new BasicNameValuePair("encode_type", "1"));
-//
-//				HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
-//				httpPost.setHeader("apikey", "GvqyYQyjUAqEMQVkKhPSJUKiajkgWzZG");
-//				httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
-//				httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
-//
-//				HttpResponse httpResponse = httpClient.execute(httpPost);
-//
-//				String body = null;
-//				HttpEntity entity = httpResponse.getEntity();
-//				if (entity != null) {
-//					body = EntityUtils.toString(entity);
-//				}
-//				Gson gson = new Gson();
-//				JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
-//
-//				int errorCode = jsonObject.get("error_code").getAsInt();
-//				if (errorCode == 0) {
-//					String url = jsonObject.get("data").getAsJsonObject().get("url").getAsString();
-//					String inputStream = getInputStream(url);
-//					if (!inputStream.equals("")) {
-//						byte[] decode = Base64.getDecoder().decode(inputStream);
-//						Files.write(decode, new File("voices/giohang_" + i + "_mon.mp3"));
-//					}
-//				} else {
-//					throw new Exception("Limit");
-//				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				break;
-//			}
-//		}
+		
 
 	}
 
-	private static void genprice() {
-		for (int i = 1899000; i <= 2000000; i = i + 500) {
+	private static void gencustom(String content, String dir) {
+		try (CloseableHttpClient httpClient = HttpClients.createDefault();) {
+
+			List<NameValuePair> params = new ArrayList<>();
+			params.add(new BasicNameValuePair("input", content));
+			params.add(new BasicNameValuePair("speed", SPEED));
+			params.add(new BasicNameValuePair("encode_type", "1"));
+
+			HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
+			httpPost.setHeader("apikey", APIKEY);
+			httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
+			httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
+
+			HttpResponse httpResponse = httpClient.execute(httpPost);
+
+			String body = null;
+			HttpEntity entity = httpResponse.getEntity();
+			if (entity != null) {
+				body = EntityUtils.toString(entity);
+			}
+			Gson gson = new Gson();
+			JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
+
+			int errorCode = jsonObject.get("error_code").getAsInt();
+			String error_message = jsonObject.get("error_message").getAsString();
+			if (errorCode == 0) {
+				String url = jsonObject.get("data").getAsJsonObject().get("url").getAsString();
+				String inputStream = getInputStream(url);
+				if (!inputStream.equals("")) {
+					byte[] decode = Base64.getDecoder().decode(inputStream);
+					Files.write(decode, new File(dir+"/giamcon.mp3"));
+				}
+			} else {
+				throw new Exception(error_message);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void genxmon() {
+		for (int i = 22; i <= 50; i++) {
 			try (CloseableHttpClient httpClient = HttpClients.createDefault();) {
 
 				List<NameValuePair> params = new ArrayList<>();
-				params.add(new BasicNameValuePair("input", String.valueOf(i)));
-				params.add(new BasicNameValuePair("speed", "1.2"));
+				params.add(new BasicNameValuePair("input", "giỏ hàng " + i + " món, tổng tiền"));
+				params.add(new BasicNameValuePair("speed", SPEED));
 				params.add(new BasicNameValuePair("encode_type", "1"));
 
 				HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
-				httpPost.setHeader("apikey", "trortfJFigqJQfqx7PWVWhEFfOXKBHaj");
+				httpPost.setHeader("apikey", APIKEY);
 				httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
 				httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
 
@@ -105,7 +110,49 @@ public class Main {
 					String inputStream = getInputStream(url);
 					if (!inputStream.equals("")) {
 						byte[] decode = Base64.getDecoder().decode(inputStream);
-						Files.write(decode, new File("voices/" + i + ".mp3"));
+						Files.write(decode, new File("mon/" + i + "mon.mp3"));
+					}
+				} else {
+					throw new Exception("Limit");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				break;
+			}
+		}
+	}
+
+	private static void genprice() {
+		for (int i = 1749500; i <= 2000000; i = i + 500) {
+			try (CloseableHttpClient httpClient = HttpClients.createDefault();) {
+
+				List<NameValuePair> params = new ArrayList<>();
+				params.add(new BasicNameValuePair("input", String.valueOf(i)));
+				params.add(new BasicNameValuePair("speed", SPEED));
+				params.add(new BasicNameValuePair("encode_type", "1"));
+
+				HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
+				httpPost.setHeader("apikey", APIKEY);
+				httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
+				httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
+
+				HttpResponse httpResponse = httpClient.execute(httpPost);
+
+				String body = null;
+				HttpEntity entity = httpResponse.getEntity();
+				if (entity != null) {
+					body = EntityUtils.toString(entity);
+				}
+				Gson gson = new Gson();
+				JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
+
+				int errorCode = jsonObject.get("error_code").getAsInt();
+				if (errorCode == 0) {
+					String url = jsonObject.get("data").getAsJsonObject().get("url").getAsString();
+					String inputStream = getInputStream(url);
+					if (!inputStream.equals("")) {
+						byte[] decode = Base64.getDecoder().decode(inputStream);
+						Files.write(decode, new File("sotien/" + i + ".mp3"));
 					}
 				} else {
 					throw new Exception("Limit");

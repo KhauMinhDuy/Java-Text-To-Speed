@@ -26,19 +26,19 @@ public class App {
 //		byte[] data = Files.readAllBytes(Paths.get("src/main/resources/hello.mp3"));
 		
 
-		byte[] N_1 = Files.readAllBytes(Paths.get("voice/N_1.mp3"));
-		byte[] N_2 = Files.readAllBytes(Paths.get("voice/N_2.mp3"));
-		byte[] N_5 = Files.readAllBytes(Paths.get("voice/N_5.mp3"));
-		byte[] N_6 = Files.readAllBytes(Paths.get("voice/N_6.mp3"));
-		byte[] N_7 = Files.readAllBytes(Paths.get("voice/N_7.mp3"));
-		byte[] T_MOT = Files.readAllBytes(Paths.get("voice/T_MOT.mp3"));
-		byte[] T_MUOI = Files.readAllBytes(Paths.get("voice/T_MUOI.mp3"));
-		byte[] T_MUOIF = Files.readAllBytes(Paths.get("voice/T_MUOIF.mp3"));
-		byte[] T_NGHIN = Files.readAllBytes(Paths.get("voice/T_NGHIN.mp3"));
-		byte[] T_TRAM = Files.readAllBytes(Paths.get("voice/T_TRAM.mp3"));
-		byte[] T_TRIEU = Files.readAllBytes(Paths.get("voice/T_TRIEU.mp3"));
-		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voice/T_TONGTIEN.mp3"));
-		byte[] T_KHUYENMAI = Files.readAllBytes(Paths.get("voice/T_KHUYENMAI.mp3"));
+//		byte[] N_1 = Files.readAllBytes(Paths.get("voice/N_1.mp3"));
+//		byte[] N_2 = Files.readAllBytes(Paths.get("voice/N_2.mp3"));
+//		byte[] N_5 = Files.readAllBytes(Paths.get("voice/N_5.mp3"));
+//		byte[] N_6 = Files.readAllBytes(Paths.get("voice/N_6.mp3"));
+//		byte[] N_7 = Files.readAllBytes(Paths.get("voice/N_7.mp3"));
+//		byte[] T_MOT = Files.readAllBytes(Paths.get("voice/T_MOT.mp3"));
+//		byte[] T_MUOI = Files.readAllBytes(Paths.get("voice/T_MUOI.mp3"));
+//		byte[] T_MUOIF = Files.readAllBytes(Paths.get("voice/T_MUOIF.mp3"));
+//		byte[] T_NGHIN = Files.readAllBytes(Paths.get("voice/T_NGHIN.mp3"));
+//		byte[] T_TRAM = Files.readAllBytes(Paths.get("voice/T_TRAM.mp3"));
+//		byte[] T_TRIEU = Files.readAllBytes(Paths.get("voice/T_TRIEU.mp3"));
+//		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voice/T_TONGTIEN.mp3"));
+//		byte[] T_KHUYENMAI = Files.readAllBytes(Paths.get("voice/T_KHUYENMAI.mp3"));
 
 		List<byte[]> voices = new ArrayList<>();
 //		voices.add(N_1);
@@ -59,7 +59,7 @@ public class App {
 		
 
 //		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
-		byte[] decode = Base64.getDecoder().decode(Const._50mon_test);
+		byte[] decode = Base64.getDecoder().decode(Const._25mon);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
 		player.play();
