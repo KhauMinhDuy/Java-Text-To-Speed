@@ -59,7 +59,7 @@ public class App {
 		
 
 //		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
-		byte[] decode = Base64.getDecoder().decode(Const._25mon);
+		byte[] decode = Base64.getDecoder().decode(Const.text);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
 		player.play();

@@ -27,7 +27,7 @@ import com.google.gson.JsonObject;
 
 public class Main {
 	
-	private static final String APIKEY = "BteNwKa7jbIQ5EoNUNfl6TlEKlwcglrk";
+	private static final String APIKEY = "GvqyYQyjUAqEMQVkKhPSJUKiajkgWzZG";
 	private static final String SPEED = "1.05";
 
 	public static void main(String[] args) {
@@ -123,7 +123,7 @@ public class Main {
 	}
 
 	private static void genprice() {
-		for (int i = 1749500; i <= 2000000; i = i + 500) {
+		for (int i = 1891500; i <= 2000000; i = i + 500) {
 			try (CloseableHttpClient httpClient = HttpClients.createDefault();) {
 
 				List<NameValuePair> params = new ArrayList<>();
