@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -59,7 +60,8 @@ public class App {
 		
 
 //		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
-		byte[] decode = Base64.getDecoder().decode(Const.text);
+		byte[] decode = Base64.getDecoder().decode(Const.text5);
+		Files.write(Paths.get("voice4.mp3"), Base64.getDecoder().decode(Const.text5), StandardOpenOption.CREATE);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
 		player.play();

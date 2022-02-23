@@ -111,13 +111,13 @@ public class Controller implements Initializable {
 	}
 
 	public void playMedia() throws InterruptedException {
-//		beginTimer();
-//		changeSpeed(null);
-//		mediaPlayer1.setVolume(volumeSlider.getValue() * 0.01);
-//		mediaPlayer1.play();
-//		Duration currentTime = mediaPlayer1.getCurrentTime();
-//		double seconds = currentTime.toSeconds();
-//		Thread.sleep((long)seconds);
+		beginTimer();
+		changeSpeed(null);
+		mediaPlayer1.setVolume(volumeSlider.getValue() * 0.01);
+		mediaPlayer1.play();
+		Duration currentTime = mediaPlayer1.getCurrentTime();
+		double seconds = currentTime.toSeconds();
+		Thread.sleep((long)seconds);
 		
 //		mediaPlayer2.play();
 		
