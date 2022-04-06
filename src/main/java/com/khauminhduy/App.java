@@ -27,31 +27,31 @@ public class App {
 //		byte[] data = Files.readAllBytes(Paths.get("src/main/resources/hello.mp3"));
 		
 
-//		byte[] N_1 = Files.readAllBytes(Paths.get("voice/N_1.mp3"));
-//		byte[] N_2 = Files.readAllBytes(Paths.get("voice/N_2.mp3"));
-//		byte[] N_5 = Files.readAllBytes(Paths.get("voice/N_5.mp3"));
-//		byte[] N_6 = Files.readAllBytes(Paths.get("voice/N_6.mp3"));
-//		byte[] N_7 = Files.readAllBytes(Paths.get("voice/N_7.mp3"));
-//		byte[] T_MOT = Files.readAllBytes(Paths.get("voice/T_MOT.mp3"));
-//		byte[] T_MUOI = Files.readAllBytes(Paths.get("voice/T_MUOI.mp3"));
-//		byte[] T_MUOIF = Files.readAllBytes(Paths.get("voice/T_MUOIF.mp3"));
-//		byte[] T_NGHIN = Files.readAllBytes(Paths.get("voice/T_NGHIN.mp3"));
-//		byte[] T_TRAM = Files.readAllBytes(Paths.get("voice/T_TRAM.mp3"));
-//		byte[] T_TRIEU = Files.readAllBytes(Paths.get("voice/T_TRIEU.mp3"));
-//		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voice/T_TONGTIEN.mp3"));
-//		byte[] T_KHUYENMAI = Files.readAllBytes(Paths.get("voice/T_KHUYENMAI.mp3"));
+		byte[] N_1 = Files.readAllBytes(Paths.get("voices_old_1/N_1.mp3"));
+		byte[] N_2 = Files.readAllBytes(Paths.get("voices_old_1/N_2.mp3"));
+		byte[] N_5 = Files.readAllBytes(Paths.get("voices_old_1/N_5.mp3"));
+		byte[] N_6 = Files.readAllBytes(Paths.get("voices_old_1/N_6.mp3"));
+		byte[] N_7 = Files.readAllBytes(Paths.get("voices_old_1/N_7.mp3"));
+		byte[] T_MOT = Files.readAllBytes(Paths.get("voices_old_1/T_MOT.mp3"));
+		byte[] T_MUOI = Files.readAllBytes(Paths.get("voices_old_1/T_MUOI.mp3"));
+		byte[] T_MUOIF = Files.readAllBytes(Paths.get("voices_old_1/T_MUOIF.mp3"));
+		byte[] T_NGHIN = Files.readAllBytes(Paths.get("voices_old_1/T_NGHIN.mp3"));
+		byte[] T_TRAM = Files.readAllBytes(Paths.get("voices_old_1/T_TRAM.mp3"));
+		byte[] T_TRIEU = Files.readAllBytes(Paths.get("voices_old_1/T_TRIEU.mp3"));
+		byte[] T_TONGTIEN = Files.readAllBytes(Paths.get("voices_old_1/T_TONGTIEN.mp3"));
+		byte[] T_KHUYENMAI = Files.readAllBytes(Paths.get("voices_old_1/T_KHUYENMAI.mp3"));
 
 		List<byte[]> voices = new ArrayList<>();
-//		voices.add(N_1);
-//		voices.add(T_TRIEU);
-//		voices.add(N_7);
-//		voices.add(T_TRAM);
-//		voices.add(N_2);
-//		voices.add(T_MUOI);
-//		voices.add(T_MOT);
-//		voices.add(T_NGHIN);
-//		voices.add(N_5);
-//		voices.add(T_TRAM);
+		voices.add(N_1);
+		voices.add(T_TRIEU);
+		voices.add(N_7);
+		voices.add(T_TRAM);
+		voices.add(N_2);
+		voices.add(T_MUOI);
+		voices.add(T_MOT);
+		voices.add(T_NGHIN);
+		voices.add(N_5);
+		voices.add(T_TRAM);
 		
 //		voices.add(T_MUOIF);
 //		voices.add(N_6);
@@ -60,7 +60,7 @@ public class App {
 		
 
 //		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
-		byte[] decode = Base64.getDecoder().decode(Const.text5);
+		byte[] decode = Base64.getDecoder().decode(Const._25mon);
 		Files.write(Paths.get("voice4.mp3"), Base64.getDecoder().decode(Const.text5), StandardOpenOption.CREATE);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
