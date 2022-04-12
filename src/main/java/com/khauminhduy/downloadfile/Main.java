@@ -27,17 +27,14 @@ import com.google.gson.JsonObject;
 
 public class Main {
 	
+	private static final String URL = "https://api.zalo.ai/v1/tts/synthesize";
 	private static final String APIKEY = "GvqyYQyjUAqEMQVkKhPSJUKiajkgWzZG";
-	private static final String SPEED = "1.05";
+	private static final String SPEED = "1.2";
 
 	public static void main(String[] args) {
-
 //		genxmon();
-//		gencustom("cảm ơn quý khách", "camonquykhach");
-//		gencustom("giảm còn", "giamcon");
-		genprice();
-		
-
+//		genprice();
+		gencustom("Bia Corona Extra Chai 355ml TH24", "bia_corona_extra");
 	}
 
 	private static void gencustom(String content, String dir) {
@@ -48,7 +45,7 @@ public class Main {
 			params.add(new BasicNameValuePair("speed", SPEED));
 			params.add(new BasicNameValuePair("encode_type", "1"));
 
-			HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
+			HttpPost httpPost = new HttpPost(URL);
 			httpPost.setHeader("apikey", APIKEY);
 			httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
 			httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
@@ -64,16 +61,16 @@ public class Main {
 			JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
 
 			int errorCode = jsonObject.get("error_code").getAsInt();
-			String error_message = jsonObject.get("error_message").getAsString();
+			String errorMessage = jsonObject.get("error_message").getAsString();
 			if (errorCode == 0) {
 				String url = jsonObject.get("data").getAsJsonObject().get("url").getAsString();
 				String inputStream = getInputStream(url);
 				if (!inputStream.equals("")) {
 					byte[] decode = Base64.getDecoder().decode(inputStream);
-					Files.write(decode, new File(dir+"/giamcon.mp3"));
+					Files.write(decode, new File(dir+".mp3"));
 				}
 			} else {
-				throw new Exception(error_message);
+				throw new Exception(errorMessage);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -89,7 +86,7 @@ public class Main {
 				params.add(new BasicNameValuePair("speed", SPEED));
 				params.add(new BasicNameValuePair("encode_type", "1"));
 
-				HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
+				HttpPost httpPost = new HttpPost(URL);
 				httpPost.setHeader("apikey", APIKEY);
 				httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
 				httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
@@ -105,6 +102,7 @@ public class Main {
 				JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
 
 				int errorCode = jsonObject.get("error_code").getAsInt();
+				String errorMessage = jsonObject.get("error_message").getAsString();
 				if (errorCode == 0) {
 					String url = jsonObject.get("data").getAsJsonObject().get("url").getAsString();
 					String inputStream = getInputStream(url);
@@ -113,7 +111,7 @@ public class Main {
 						Files.write(decode, new File("mon/" + i + "mon.mp3"));
 					}
 				} else {
-					throw new Exception("Limit");
+					throw new Exception(errorMessage);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -131,7 +129,7 @@ public class Main {
 				params.add(new BasicNameValuePair("speed", SPEED));
 				params.add(new BasicNameValuePair("encode_type", "1"));
 
-				HttpPost httpPost = new HttpPost("https://api.zalo.ai/v1/tts/synthesize");
+				HttpPost httpPost = new HttpPost(URL);
 				httpPost.setHeader("apikey", APIKEY);
 				httpPost.setHeader("Content-type", "application/x-www-form-urlencoded");
 				httpPost.setEntity(new UrlEncodedFormEntity(params, StandardCharsets.UTF_8));
@@ -147,6 +145,7 @@ public class Main {
 				JsonObject jsonObject = gson.fromJson(body, JsonObject.class);
 
 				int errorCode = jsonObject.get("error_code").getAsInt();
+				String errorMessage = jsonObject.get("error_message").getAsString();
 				if (errorCode == 0) {
 					String url = jsonObject.get("data").getAsJsonObject().get("url").getAsString();
 					String inputStream = getInputStream(url);
@@ -155,7 +154,7 @@ public class Main {
 						Files.write(decode, new File("sotien/" + i + ".mp3"));
 					}
 				} else {
-					throw new Exception("Limit");
+					throw new Exception(errorMessage);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -18,14 +18,9 @@ import com.khauminhduy.consts.Const;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
-
-
 public class App {
 
 	public static void main(String[] args) throws Exception {
-//		boolean done = textToSound("Xin Chào Quý Khách");
-//		byte[] data = Files.readAllBytes(Paths.get("src/main/resources/hello.mp3"));
-		
 
 		byte[] N_1 = Files.readAllBytes(Paths.get("voices_old_1/N_1.mp3"));
 		byte[] N_2 = Files.readAllBytes(Paths.get("voices_old_1/N_2.mp3"));
@@ -53,15 +48,7 @@ public class App {
 		voices.add(N_5);
 		voices.add(T_TRAM);
 		
-//		voices.add(T_MUOIF);
-//		voices.add(N_6);
-//		voices.add(T_NGHIN);
-
-		
-
-//		byte[] decode = Base64.getDecoder().decode(Const.QKDM);
 		byte[] decode = Base64.getDecoder().decode(Const._25mon);
-		Files.write(Paths.get("voice4.mp3"), Base64.getDecoder().decode(Const.text5), StandardOpenOption.CREATE);
 		BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(decode));
 		AdvancedPlayer player = new AdvancedPlayer(inputStream);
 		player.play();
@@ -69,24 +56,7 @@ public class App {
 			inputStream = new BufferedInputStream(new ByteArrayInputStream(voice));
 			player = new AdvancedPlayer(inputStream);
 			player.play(0, 5);
-
 		}
-		
-//		inputStream = new BufferedInputStream(new ByteArrayInputStream(T_KHUYENMAI));
-//		player = new AdvancedPlayer(inputStream);
-//		player.play();
-		
-		voices.clear();
-//		voices.add(T_MUOIF);
-//		voices.add(T_NGHIN);
-		for (byte[] voice : voices) {
-			inputStream = new BufferedInputStream(new ByteArrayInputStream(voice));
-			player = new AdvancedPlayer(inputStream);
-			player.play(0, 5);
-
-		}
-		
-		
 		
 	}
 
