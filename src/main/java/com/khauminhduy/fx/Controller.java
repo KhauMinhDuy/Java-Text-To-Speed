@@ -2,8 +2,6 @@ package com.khauminhduy.fx;
 
 import java.io.File;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.TimerTask;
 
 import com.khauminhduy.consts.Const;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -38,7 +34,19 @@ public class Controller implements Initializable {
 	private Label songLabel;
 
 	@FXML
-	private Button playButton, pauseButton, resetButton, previousButton, nextButton;
+	private Button playButton;
+	
+	@FXML
+	private Button pauseButton;
+	
+	@FXML
+	private Button resetButton;
+	
+	@FXML
+	private Button previousButton;
+	
+	@FXML
+	private Button nextButton;
 
 	@FXML
 	private ComboBox<String> speedBox;
@@ -51,17 +59,12 @@ public class Controller implements Initializable {
 
 	private Media media1;
 	private MediaPlayer mediaPlayer1;
-	private Media media2;
-	private MediaPlayer mediaPlayer2;
 
-	private File directory;
-	private File[] files;
 	private List<File> songs;
 	private int songNumber;
 	private int[] speed = { 25, 50, 75, 100, 125, 150, 175, 200 };
 
 	private Timer timer;
-	private TimerTask timerTask;
 	private boolean running;
 
 	byte[] decode = Base64.getDecoder().decode(Const._28mon);
@@ -70,9 +73,9 @@ public class Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		songs = new ArrayList<>();
-		directory = new File("music");
+		File directory = new File("music");
 
-		files = directory.listFiles();
+		File[] files = directory.listFiles();
 		if (files != null) {
 			for (File file : files) {
 				songs.add(file);
@@ -81,17 +84,6 @@ public class Controller implements Initializable {
 
 		media1 = new Media(songs.get(songNumber).toURI().toString());
 		mediaPlayer1 = new MediaPlayer(media1);
-//		media = new Media("https://pos.bachhoaxanh.com/inventoryimages/PMBH_Voice/411472_1063023000073.mp3");
-//		try {
-//			media1 = new Media(write(Paths.get("voic1.mp3"), decode).toUri().toString());
-//			mediaPlayer1 = new MediaPlayer(media1);
-//			
-//			media2 = new Media(write(Paths.get("voice2.mp3"), decode2).toUri().toString());
-//			mediaPlayer2 = new MediaPlayer(media2);
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 
 		songLabel.setText(songs.get(songNumber).getName());
 
@@ -101,13 +93,8 @@ public class Controller implements Initializable {
 
 		speedBox.setOnAction(this::changeSpeed);
 
-		volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				mediaPlayer1.setVolume(volumeSlider.getValue() * 0.01);
-			}
-		});
+		volumeSlider.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue,
+				Number newValue) -> mediaPlayer1.setVolume(volumeSlider.getValue() * 0.01));
 	}
 
 	public void playMedia() throws InterruptedException {
@@ -117,45 +104,8 @@ public class Controller implements Initializable {
 		mediaPlayer1.play();
 		Duration currentTime = mediaPlayer1.getCurrentTime();
 		double seconds = currentTime.toSeconds();
-		Thread.sleep((long)seconds);
-		
-//		mediaPlayer2.play();
-		
-		
+		Thread.sleep((long) seconds);
 
-		File N_1 = new File("voice/N_1.mp3");
-		File N_2 = new File("voice/N_2.mp3");
-		File N_5 = new File("voice/N_5.mp3");
-		File N_7 = new File("voice/N_7.mp3");
-		File T_MOT = new File("voice/T_MOT.mp3");
-		File T_MUOI =new File("voice/T_MUOI.mp3");
-		File T_NGHIN = new File("voice/T_NGHIN.mp3");
-		File T_TRAM = new File("voice/T_TRAM.mp3");
-		File T_TRIEU = new File("voice/T_TRIEU.mp3");
-		
-		List<File> voices = new ArrayList<>();
-		voices.add(N_1);
-		voices.add(T_TRIEU);
-		voices.add(N_7);
-		voices.add(T_TRAM);
-		voices.add(N_2);
-		voices.add(T_MUOI);
-		voices.add(T_MOT);
-		voices.add(T_NGHIN);
-		voices.add(N_5);
-		voices.add(T_TRAM);
-		
-		Media media;
-		MediaPlayer mediaPlayer;
-		for(File voice : voices) {
-			media = new Media(voice.toURI().toString());
-			mediaPlayer = new MediaPlayer(media);
-			mediaPlayer.setStartTime(mediaPlayer.getStartTime());
-			mediaPlayer.setStopTime(mediaPlayer.getStopTime());
-			mediaPlayer.play();
-		}
-		
-		
 	}
 
 	public void pauseMedia() {
@@ -243,7 +193,7 @@ public class Controller implements Initializable {
 
 	public void beginTimer() {
 		timer = new Timer();
-		timerTask = new TimerTask() {
+		TimerTask timerTask = new TimerTask() {
 
 			@Override
 			public void run() {

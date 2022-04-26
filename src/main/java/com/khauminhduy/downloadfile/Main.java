@@ -28,13 +28,13 @@ import com.google.gson.JsonObject;
 public class Main {
 	
 	private static final String URL = "https://api.zalo.ai/v1/tts/synthesize";
-	private static final String APIKEY = "GvqyYQyjUAqEMQVkKhPSJUKiajkgWzZG";
+	private static final String APIKEY = "BteNwKa7jbIQ5EoNUNfl6TlEKlwcglrk";
 	private static final String SPEED = "1.2";
 
 	public static void main(String[] args) {
 //		genxmon();
 //		genprice();
-		gencustom("Bia Corona Extra Chai 355ml TH24", "bia_corona_extra");
+		gencustom("NƯỚC MẮM LÀNG CHÀI XƯA 100% CÁ CƠM TƯƠI CHAI 500ml giá 48 ngàn giảm còn 39 ngàn", "voice.mp3");
 	}
 
 	private static void gencustom(String content, String dir) {
