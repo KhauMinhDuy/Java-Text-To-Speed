@@ -34,7 +34,7 @@ public class Main {
 	public static void main(String[] args) {
 //		genxmon();
 //		genprice();
-		gencustom("NƯỚC MẮM LÀNG CHÀI XƯA 100% CÁ CƠM TƯƠI CHAI 500ml giá 48 ngàn giảm còn 39 ngàn", "voice.mp3");
+		gencustom("chai", "voice3");
 	}
 
 	private static void gencustom(String content, String dir) {
