@@ -8,6 +8,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.Base64;
 import java.util.List;
 
+import com.khauminhduy.consts.Const;
+
 public class MainClass {
     public static void main(String[] args) throws IOException{
 //           new MusicPlayer();
@@ -19,6 +21,13 @@ public class MainClass {
 //    	
 //    	Path write = Files.write(Paths.get("output2.mp3"), decode, StandardOpenOption.CREATE);
 //    	System.out.println(write);
+    	
+    	byte[] decode = Base64.getDecoder().decode(Const.productid_8991002306523);
+    	Path write = Files.write(Paths.get("test.mp3"), decode, StandardOpenOption.CREATE);
+    	System.out.println(write);
+    	
+    	String encodeToString = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("voice_trim/voice.mp3")));
+    	System.out.println(encodeToString);
     	
     }
 }
