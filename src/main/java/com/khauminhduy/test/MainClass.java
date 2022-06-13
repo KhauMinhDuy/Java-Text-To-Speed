@@ -9,6 +9,8 @@ import java.util.Base64;
 import java.util.List;
 
 import com.khauminhduy.consts.Const;
+import com.khauminhduy.consts.Const2;
+import com.khauminhduy.consts.Const3;
 
 public class MainClass {
     public static void main(String[] args) throws IOException{
@@ -22,11 +24,11 @@ public class MainClass {
 //    	Path write = Files.write(Paths.get("output2.mp3"), decode, StandardOpenOption.CREATE);
 //    	System.out.println(write);
     	
-    	byte[] decode = Base64.getDecoder().decode(Const.productid_8991002306523);
-    	Path write = Files.write(Paths.get("test.mp3"), decode, StandardOpenOption.CREATE);
-    	System.out.println(write);
+//    	byte[] decode = Base64.getDecoder().decode(Const3.product);
+//    	Path write = Files.write(Paths.get("test3.mp3"), decode, StandardOpenOption.CREATE);
+//    	System.out.println(write);
     	
-    	String encodeToString = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("voice_trim/voice.mp3")));
+    	String encodeToString = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("test3.mp3")));
     	System.out.println(encodeToString);
     	
     }
